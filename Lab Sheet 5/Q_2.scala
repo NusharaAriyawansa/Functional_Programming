@@ -1,0 +1,21 @@
+object Q_2 extends App {
+    def gcd(a: Int, b: Int) : Int = b match{
+        case 0 => a
+        case x if(x>a) => gcd(x, a)    
+        case _ => gcd (b, a%b)        
+    }
+
+    def prime (p: Int, n: Int=2) : Boolean = n match{
+        case x if(x==p) => true             
+        case x if(gcd(p, x)>1) => false     
+        case x => prime(p, x+1)             
+    }
+
+    def primeSeq(n: Int, i: Int=2) : Unit = {
+        if(n>i && prime(i)) print(i + " ")
+        primeSeq(n, i+1)
+    }
+
+    primeSeq(10)   
+}
+
